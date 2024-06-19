@@ -14,6 +14,10 @@ onMounted(() => {
 
 })
 
+/* Objeto Produto */
+
+let obj = ref({'id': 0, 'produto': '', 'valor': 0});
+
 </script>
 
 <!--HTML---->
@@ -24,8 +28,9 @@ onMounted(() => {
 <!--FORMULARIO-->
 
     <form >
-        <input type="text" placeholder="Produto">
-        <input type="number" placeholder="Valor">
+        <p>{{ obj }}</p>
+        <input type="text" placeholder="Produto" v-model="obj.produto">
+        <input type="number" placeholder="Valor" v-model="obj.valor">
         <input type="submit" placeholder="Cadastrar">
     </form>
 
