@@ -20,6 +20,17 @@ onMounted(() => {
 
 <template>
 
+
+<!--FORMULARIO-->
+
+    <form >
+        <input type="text" placeholder="Produto">
+        <input type="number" placeholder="Valor">
+        <input type="submit" placeholder="Cadastrar">
+    </form>
+
+<!-- TABELA -->
+
 <table>
     <thead>
         <tr>
@@ -33,7 +44,7 @@ onMounted(() => {
     <tr v-for="p in produtos">
         <td>{{  p.produto }}</td>
         <td>{{ p.valor }}</td>
-        <td></td>
+        <td><button>SELECIONAR</button></td>
     </tr>
 </tbody>
 
