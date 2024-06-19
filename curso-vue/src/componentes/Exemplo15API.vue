@@ -37,6 +37,14 @@ function cadastrar(event){
     event.preventDefault();
 }
 
+/* Selecionar Produto Especifico */
+function selecionar(indice){
+    obj.value = {
+        id : produtos.value[indice].id,
+        produto : produtos.value[indice].produto,
+        valor : produtos.value[indice].valor,
+    }
+}
 
 </script>
 
@@ -48,7 +56,8 @@ function cadastrar(event){
 <!--FORMULARIO-->
 
     <form @submit="cadastrar">
-        <p>{{ obj }}</p>
+        
+        <input type="number" placeholder="Produto" v-model="obj.id">
         <input type="text" placeholder="Produto" v-model="obj.produto">
         <input type="number" placeholder="Valor" v-model="obj.valor">
         <input type="submit" placeholder="Cadastrar">
@@ -66,10 +75,10 @@ function cadastrar(event){
     </thead>
 
 <tbody>
-    <tr v-for="p in produtos">
+    <tr v-for="(p, indice) in produtos">
         <td>{{  p.produto }}</td>
         <td>{{ p.valor }}</td>
-        <td><button>SELECIONAR</button></td>
+        <td><button @click="selecionar(indice)">SELECIONAR</button></td>
     </tr>
 </tbody>
 
