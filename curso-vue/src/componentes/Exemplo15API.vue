@@ -18,6 +18,26 @@ onMounted(() => {
 
 let obj = ref({'id': 0, 'produto': '', 'valor': 0});
 
+/* Funcao Cadastrar */
+
+function cadastrar(event){
+
+    
+
+    //Requisicao
+    fetch('http://localhost:3000/produtos', {
+        method: 'POST',
+        body: JSON.stringify(obj.value),
+        headers: {'content-Type' : 'application/json'}
+    })
+    .then(requisicao => requisicao.json())
+    .then(retorno => console.log(retorno))
+
+
+    event.preventDefault();
+}
+
+
 </script>
 
 <!--HTML---->
@@ -27,7 +47,7 @@ let obj = ref({'id': 0, 'produto': '', 'valor': 0});
 
 <!--FORMULARIO-->
 
-    <form >
+    <form @submit="cadastrar">
         <p>{{ obj }}</p>
         <input type="text" placeholder="Produto" v-model="obj.produto">
         <input type="number" placeholder="Valor" v-model="obj.valor">
@@ -41,7 +61,7 @@ let obj = ref({'id': 0, 'produto': '', 'valor': 0});
         <tr>
             <th>Produto</th>
             <th>Valor</th>
-            <th>Selecionar</th>
+            <th>cadastrar</th>
         </tr>
     </thead>
 

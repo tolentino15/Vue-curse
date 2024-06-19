@@ -1,8 +1,34 @@
 {
-    "produtos": [
-        {"id":1,"produto":"Iphone 15","valor":7000},
-        {"id":2,"produto":"Galaxy s60","valor":10000},
-        {"id":3,"produto":"Redmi Note 12","valor":4800}
-    ]
-
+  "produtos": [
+    {
+      "id": 1,
+      "produto": "Iphone 15",
+      "valor": 7000
+    },
+    {
+      "id": 2,
+      "produto": "Galaxy s60",
+      "valor": 10000
+    },
+    {
+      "id": 3,
+      "produto": "Redmi Note 12",
+      "valor": 4800
+    },
+    {
+      "id": 0,
+      "produto": "chumbo",
+      "valor": 3000
+    },
+    {
+      "id": 0,
+      "produto": "chumbo",
+      "valor": 2000
+    },
+    {
+      "id": 0,
+      "produto": "goog",
+      "valor": 24244
+    }
+  ]
 }
