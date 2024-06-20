@@ -22,8 +22,6 @@ let obj = ref({'id': 0, 'produto': '', 'valor': 0});
 
 function cadastrar(event){
 
-    
-
     //Requisicao
     fetch('http://localhost:3000/produtos', {
         method: 'POST',
@@ -60,7 +58,9 @@ function selecionar(indice){
         <input type="number" placeholder="Produto" v-model="obj.id">
         <input type="text" placeholder="Produto" v-model="obj.produto">
         <input type="number" placeholder="Valor" v-model="obj.valor">
-        <input type="submit" placeholder="Cadastrar">
+        <input type="submit" value="Cadastrar" class="espacamentoBtn">
+        <input type="button" value="Editar " class="espacamentoBtn">
+        <input type="button" value="Remover " class="espacamentoBtn">
     </form>
 
 <!-- TABELA -->
@@ -78,7 +78,7 @@ function selecionar(indice){
     <tr v-for="(p, indice) in produtos">
         <td>{{  p.produto }}</td>
         <td>{{ p.valor }}</td>
-        <td><button @click="selecionar(indice)">SELECIONAR</button></td>
+        <td><button @click="selecionar(indice)" class="espacamentoBtn">SELECIONAR</button></td>
     </tr>
 </tbody>
 
@@ -86,3 +86,15 @@ function selecionar(indice){
 </table>
 
 </template>
+
+
+<!-- CSS -->
+
+<style>
+
+.espacamentoBtn{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+</style>
