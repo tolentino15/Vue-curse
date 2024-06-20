@@ -19,7 +19,7 @@ let btnCadastrar = ref([true]);
 
 /* Objeto Produto */
 
-let obj = ref({'id': 0, 'produto': '', 'valor': 0});
+let obj = ref({'id':String(produtos.value.length), 'produto': '', 'valor': 0});
 
 /* Funcao Cadastrar */
 
@@ -53,16 +53,30 @@ function cadastrar(event){
 function editar(){
 
 //Requisicao
-fetch('http://localhost:3000/produtos/' + obj.value.id, {
-    method: 'PUT',
+fetch('http://localhost:3000/produtos/'+ obj.value.id, {
+    method: 'PUT', //Alterar
     body: JSON.stringify(obj.value),
     headers: {'content-Type' : 'application/json'}
 })
 .then(requisicao => requisicao.json())
-.then(retorno => console.log(retorno))
+.then(retorno => {
+
+//Obter indice do vetor
+    let indiceprod = produtos.value.findIndex(objP => {
+        return objP.id === retorno.id;
+    });
+
+//Editar produto no vetor
+produtos.value[indiceprod] = retorno;
+
+//Limpar inputs
+obj.value.produto = '';
+obj.value.valor = 0;
+obj.value.id = 0
+
+})
 
 
-event.preventDefault();
 }
 
 /* Selecionar Produto Especifico */
@@ -88,7 +102,7 @@ function selecionar(indice){
 
     <form @submit="cadastrar" class="form">
         
-        <input type="number" placeholder="Produto" v-model="obj.id" >
+        <input type="hidden" placeholder="Produto" v-model="obj.id" >
         <input type="text" placeholder="Produto" v-model="obj.produto" >
         <input type="number" placeholder="Valor" v-model="obj.valor" >
         <input type="submit" v-if="btnCadastrar" value="Cadastrar" class="espacamentoBtn btn">
