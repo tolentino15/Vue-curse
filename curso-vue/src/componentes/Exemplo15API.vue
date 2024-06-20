@@ -32,7 +32,17 @@ function cadastrar(event){
         headers: {'content-Type' : 'application/json'}
     })
     .then(requisicao => requisicao.json())
-    .then(retorno => console.log(retorno))
+    .then(retorno => {
+
+            //Cadastrar produto no vetor
+            produtos.value.push(retorno)
+
+            //Limpar inputs
+            obj.value.produto = '';
+            obj.value.valor = 0;
+            obj.value.id = 0
+
+    })
 
 
     event.preventDefault(); //  não atualizar a pagina
@@ -118,6 +128,7 @@ function selecionar(indice){
 .form{
     width: 50%;
     margin: 30px auto;
+    text-align: center;
 }
 
 .btn{
