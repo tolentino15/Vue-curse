@@ -55,12 +55,12 @@ function selecionar(indice){
 
     <form @submit="cadastrar">
         
-        <input type="number" placeholder="Produto" v-model="obj.id">
-        <input type="text" placeholder="Produto" v-model="obj.produto">
-        <input type="number" placeholder="Valor" v-model="obj.valor">
-        <input type="submit" value="Cadastrar" class="espacamentoBtn">
-        <input type="button" value="Editar " class="espacamentoBtn">
-        <input type="button" value="Remover " class="espacamentoBtn">
+        <input type="number" placeholder="Produto" v-model="obj.id" class="inp">
+        <input type="text" placeholder="Produto" v-model="obj.produto" class="inp">
+        <input type="number" placeholder="Valor" v-model="obj.valor" class="inp">
+        <input type="submit" value="Cadastrar" class="espacamentoBtn btn">
+        <input type="button" value="Editar " class="espacamentoBtn btn">
+        <input type="button" value="Remover " class="espacamentoBtn btn">
     </form>
 
 <!-- TABELA -->
@@ -78,7 +78,7 @@ function selecionar(indice){
     <tr v-for="(p, indice) in produtos">
         <td>{{  p.produto }}</td>
         <td>{{ p.valor }}</td>
-        <td><button @click="selecionar(indice)" class="espacamentoBtn">SELECIONAR</button></td>
+        <td><button @click="selecionar(indice)" class="espacamentoBtn btn">SELECIONAR</button></td>
     </tr>
 </tbody>
 
@@ -91,6 +91,16 @@ function selecionar(indice){
 <!-- CSS -->
 
 <style>
+
+.inp{
+    margin: 10px;
+}
+
+.btn{
+    background-color: blueviolet;
+    color: white;
+    font-size: medium;
+}
 
 .espacamentoBtn{
     margin-left: 5px;
