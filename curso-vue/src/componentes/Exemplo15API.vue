@@ -35,7 +35,24 @@ function cadastrar(event){
     .then(retorno => console.log(retorno))
 
 
-    event.preventDefault();
+    event.preventDefault(); //  não atualizar a pagina
+}
+
+/* Funcao Editar */
+
+function editar(){
+
+//Requisicao
+fetch('http://localhost:3000/produtos/' + obj.value.id, {
+    method: 'PUT',
+    body: JSON.stringify(obj.value),
+    headers: {'content-Type' : 'application/json'}
+})
+.then(requisicao => requisicao.json())
+.then(retorno => console.log(retorno))
+
+
+event.preventDefault();
 }
 
 /* Selecionar Produto Especifico */
@@ -59,13 +76,13 @@ function selecionar(indice){
 
 <!--FORMULARIO-->
 
-    <form @submit="cadastrar">
+    <form @submit="cadastrar" class="form">
         
-        <input type="number" placeholder="Produto" v-model="obj.id" class="inp">
-        <input type="text" placeholder="Produto" v-model="obj.produto" class="inp">
-        <input type="number" placeholder="Valor" v-model="obj.valor" class="inp">
+        <input type="number" placeholder="Produto" v-model="obj.id" >
+        <input type="text" placeholder="Produto" v-model="obj.produto" >
+        <input type="number" placeholder="Valor" v-model="obj.valor" >
         <input type="submit" v-if="btnCadastrar" value="Cadastrar" class="espacamentoBtn btn">
-        <input type="button" v-if="!btnCadastrar" value="Editar " class="espacamentoBtn btn">
+        <input type="button" @click="editar" v-if="!btnCadastrar" value="Editar " class="espacamentoBtn btn">
         <input type="button" v-if="!btnCadastrar" value="Remover " class="espacamentoBtn btn">
     </form>
 
@@ -98,8 +115,9 @@ function selecionar(indice){
 
 <style>
 
-.inp{
-    margin: 10px;
+.form{
+    width: 50%;
+    margin: 30px auto;
 }
 
 .btn{
