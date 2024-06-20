@@ -14,6 +14,9 @@ onMounted(() => {
 
 })
 
+/* Visibilidade dos botoes */
+let btnCadastrar = ref([true]);
+
 /* Objeto Produto */
 
 let obj = ref({'id': 0, 'produto': '', 'valor': 0});
@@ -42,6 +45,9 @@ function selecionar(indice){
         produto : produtos.value[indice].produto,
         valor : produtos.value[indice].valor,
     }
+
+    btnCadastrar.value = false; //Tira o botao cadatrar
+
 }
 
 </script>
@@ -58,9 +64,9 @@ function selecionar(indice){
         <input type="number" placeholder="Produto" v-model="obj.id" class="inp">
         <input type="text" placeholder="Produto" v-model="obj.produto" class="inp">
         <input type="number" placeholder="Valor" v-model="obj.valor" class="inp">
-        <input type="submit" value="Cadastrar" class="espacamentoBtn btn">
-        <input type="button" value="Editar " class="espacamentoBtn btn">
-        <input type="button" value="Remover " class="espacamentoBtn btn">
+        <input type="submit" v-if="btnCadastrar" value="Cadastrar" class="espacamentoBtn btn">
+        <input type="button" v-if="!btnCadastrar" value="Editar " class="espacamentoBtn btn">
+        <input type="button" v-if="!btnCadastrar" value="Remover " class="espacamentoBtn btn">
     </form>
 
 <!-- TABELA -->
