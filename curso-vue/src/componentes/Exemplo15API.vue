@@ -19,7 +19,7 @@ let btnCadastrar = ref([true]);
 
 /* Objeto Produto */
 
-let obj = ref({'id':String(produtos.value.length), 'produto': '', 'valor': 0});
+let obj = ref({'id':0, 'produto': '', 'valor': 0});
 
 /* Funcao Cadastrar */
 
@@ -75,7 +75,6 @@ obj.value.valor = 0;
 obj.value.id = 0
 
 })
-
 
 }
 
