@@ -69,6 +69,41 @@ fetch('http://localhost:3000/produtos/'+ obj.value.id, {
 //Editar produto no vetor
 produtos.value[indiceprod] = retorno;
 
+//Alterar visibilidade
+btnCadastrar.value = true;
+
+//Limpar inputs
+obj.value.produto = '';
+obj.value.valor = 0;
+obj.value.id = 0
+
+})
+
+}
+
+/* FUNCAO REMOVER */
+function remover(){
+
+//Requisicao
+fetch('http://localhost:3000/produtos/'+ obj.value.id, {
+    method: 'DELETE', //Alterar 
+    //nao tem body
+    headers: {'content-Type' : 'application/json'}
+})
+.then(requisicao => requisicao.json())
+.then(() => { //nao tem retorno
+
+//Obter indice do vetor
+    let indiceprod = produtos.value.findIndex(objP => {
+        return objP.id === obj.value.id; //obj.value pois nao tem retorno
+    });
+
+//remover produto no vetor
+produtos.value.splice(indiceprod,1); //splice remove valores do array
+
+//Alterar visibilidade
+btnCadastrar.value = true;
+
 //Limpar inputs
 obj.value.produto = '';
 obj.value.valor = 0;
@@ -106,7 +141,7 @@ function selecionar(indice){
         <input type="number" placeholder="Valor" v-model="obj.valor" >
         <input type="submit" v-if="btnCadastrar" value="Cadastrar" class="espacamentoBtn btn">
         <input type="button" @click="editar" v-if="!btnCadastrar" value="Editar " class="espacamentoBtn btn">
-        <input type="button" v-if="!btnCadastrar" value="Remover " class="espacamentoBtn btn">
+        <input type="button" @click="remover" v-if="!btnCadastrar" value="Remover " class="espacamentoBtn btn">
     </form>
 
 <!-- TABELA -->
