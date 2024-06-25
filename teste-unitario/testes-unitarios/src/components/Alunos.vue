@@ -11,7 +11,6 @@
     function mediaAluno(nota1, nota2){
             return (nota1+nota2)/2;
     }
-
     //situacao do aluno
     function situacao(media){
         let situacaoAluno = '';
@@ -23,7 +22,6 @@
         }else{
             situacaoAluno = 'Reprovado!'
         }
-
 
         return situacaoAluno
     }
